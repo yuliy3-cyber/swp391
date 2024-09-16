@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
 import dal.AccountsDAO;
 import java.io.IOException;
@@ -10,12 +11,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+import model.Accounts;
 
 /**
  *
- * @author Minh
+ * @author Gosu
  */
-public class StatusChangeServlet extends HttpServlet {
+public class searchmanager extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +38,10 @@ public class StatusChangeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StatusChangeServlet</title>");
+            out.println("<title>Servlet searchmanager</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet StatusChangeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet searchmanager at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,15 +60,11 @@ public class StatusChangeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
+        String search = request.getParameter("search");
         AccountsDAO adb = new AccountsDAO();
-
-        if (username != null) {
-            String currentStatus = adb.getUserStatusByUsername(username);
-            String newStatus = currentStatus.equals("Active") ? "Inactive" : "Active";
-            adb.updateUserStatusByUsername(username, newStatus);
-        }
-
-        response.sendRedirect("adminpage.jsp");
+        List<Accounts> al = adb.getsearchManager(username, search);
+        request.setAttribute("data", al);
+        request.getRequestDispatcher("Managerpage.jsp").forward(request, response);
     }
 
     /**
