@@ -199,7 +199,7 @@ public class AccountsDAO extends DBContext {
 
     public void updateUser(String username, String email, String phone_number, String password) {
         
-        String sql = "UPDATE [Users] SET username = ?, email = ?, phone_number = ?, password = ? WHERE username = ?";
+        String sql = "UPDATE Accounts SET username = ?, email = ?, phone_number = ?, password = ? WHERE username = ?";
 
         try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, username);

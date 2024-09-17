@@ -11,7 +11,7 @@
         <form id="form" action="edit" method="post">
             <label>Username</label>
             <input class="input_type" type="text" name="username" placeholder="${e.getUsername()}">
-            <input class="input_type" type="text" name="oldusername" value="${e.getUsername()} hidden">
+            <input class="input_type" type="text" name="oldusername" value="${e.getUsername()}" hidden>
             <label>Email</label>
             <input class="input_type" type="text" name="email" placeholder="${e.getEmail()}">
 

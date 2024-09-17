@@ -17,6 +17,10 @@
         <servlet-class>controller.searchmanager</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <servlet-class>controller.EditProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Manager</servlet-name>
         <servlet-class>controller.Manager</servlet-class>
     </servlet>
