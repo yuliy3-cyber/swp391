@@ -1,6 +1,5 @@
 package dal;
 
-import com.sun.jdi.connect.spi.Connection;
 import java.util.List;
 import model.Accounts;
 import java.sql.SQLException;
@@ -210,7 +209,7 @@ public class AccountsDAO extends DBContext {
 
             int rowsAffected = st.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Cập nhật thông tin người dùng thành công.");
+                System.out.println("Cập nhật mã giảm giá thành công.");
             } else {
                 System.out.println("Không tìm thấy người dùng với tên đăng nhập đã cho.");
             }
